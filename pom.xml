@@ -7,20 +7,42 @@
     <groupId>edu.cps3230</groupId>
     <artifactId>task2-webtestautomation</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <!--
-     1. cucumber implementation for java (Cucumber)
-     2. JUnit runner - test runs (Junit)
-     3. assertion library - (Junit)
-     -->
-    <dependencies>
 
-<!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>org.seleniumhq.selenium</groupId>-->
-<!--            <artifactId>selenium-java</artifactId>-->
-<!--            <version>4.6.0</version>-->
-<!--            <scope>test</scope>-->
-<!--        </dependency>-->
+    <dependencies>
+        <!--Task 1 Setup-->
+        <!--REST API-->
+        <dependency>
+            <groupId>com.konghq</groupId>
+            <artifactId>unirest-java</artifactId>
+            <version>3.13.11</version>
+        </dependency>
+        <!--Required for running tests-->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.9.1</version>
+            <scope>test</scope>
+        </dependency>
+        <!--Required for finding elements/automation/web scraping-->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>4.5.0</version>
+        </dependency>
+        <!--Required for my test doubles, stubs, spies and mocks-->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>4.8.0</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Task 2 Setup -->
+        <!--
+         1. Cucumber implementation for java (Cucumber)
+         2. JUnit runner - test runs (JUnit)
+         3. Assertion library - (JUnit)
+         -->
 
         <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
         <dependency>
@@ -29,20 +51,11 @@
             <version>7.8.1</version>
             <scope>test</scope>
         </dependency>
-
         <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-junit</artifactId>
             <version>7.8.1</version>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>5.9.1</version>
             <scope>test</scope>
         </dependency>
 

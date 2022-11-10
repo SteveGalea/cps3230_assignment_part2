@@ -1,0 +1,3 @@
+Sources used:
+https://www.dofactory.com/net/facade-design-pattern
+https://dzone.com/articles/facade-design-pattern-in-java
