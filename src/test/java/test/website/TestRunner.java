@@ -6,8 +6,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/test/resource/features"
+        features = "C:\\Users\\steve\\repos\\cps3230_assignment_part2\\task2-webtestautomation\\src\\test\\resources\\features"
 )
 public class TestRunner {
-    //write tests here
 }

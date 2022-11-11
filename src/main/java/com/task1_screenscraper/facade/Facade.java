@@ -79,4 +79,7 @@ public class Facade {
         maltaParkScreenScraper.stopScraping();
     }
 
+    public void clearAlerts() {
+        requestMaker.makeDeleteRequest();
+    }
 }
