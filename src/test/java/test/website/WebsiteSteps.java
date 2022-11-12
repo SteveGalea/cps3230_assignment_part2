@@ -1,21 +1,17 @@
 package test.website;
 
 import com.task1_screenscraper.facade.Facade;
-import com.task1_screenscraper.rest.RequestHelper;
-import com.task1_screenscraper.rest.RequestMaker;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.checkerframework.checker.units.qual.C;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import test.website.pageobjects.MarketAlertsPageObject;
 
-import java.time.Duration;
 import java.util.List;
 
 public class WebsiteSteps {
@@ -57,13 +53,21 @@ public class WebsiteSteps {
         // assume x alerts being uploaded are Laptops
         screenScraperFacade.scrapeAndUploadXAlertsUsingKeyword(x, productTerm);
     }
+    @Before
+    public void setup(){
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\steve\\OneDrive\\Desktop\\YR3\\SEM1\\CPS3230\\webtesting\\chromedriver.exe");
+        driver = new ChromeDriver();
+        marketAlertsPageObject = new MarketAlertsPageObject(driver);
+    }
+    @After
+    public void teardown(){
+        marketAlertsPageObject.logOut();
+        driver.quit();
+    }
 
     // public methods
     @Given("I am a user of marketalertum")
     public void iAmAUserOfMarketalertum() {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\steve\\OneDrive\\Desktop\\YR3\\SEM1\\CPS3230\\webtesting\\chromedriver.exe");
-        driver = new ChromeDriver();
-        marketAlertsPageObject = new MarketAlertsPageObject(driver);
         marketAlertsPageObject.goToLoginPage();
         assertThatAllElementsOfLoginPageLoaded();
     }
@@ -76,6 +80,7 @@ public class WebsiteSteps {
     public void iShouldSeeMyAlerts() {
         assertThatMyAlertsPageLoaded();
     }
+
     @When("I login using invalid credentials")
     public void iLoginUsingInvalidCredentials() {
         // John Doe UUID - invalid for me
@@ -175,50 +180,50 @@ public class WebsiteSteps {
 
     @Given("I am an administrator of the website and I upload more than {int} alerts")
     public void iAmAnAdministratorOfTheWebsiteAndIUploadMoreThanAlerts(int x) {
-        uploadXAlerts(x);
+        uploadXAlerts(x+1);
     }
 
     @Then("I should see {int} alerts")
-    public void iShouldSeeAlerts(int arg0) {
-        Assertions.assertEquals(arg0, marketAlertsPageObject.getMyAlerts().size());
+    public void iShouldSeeAlerts(int amountExpected) {
+        Assertions.assertEquals(amountExpected, marketAlertsPageObject.getMyAlerts().size());
     }
-    @Given("I am an administrator of the website and I upload an alert of type one")
-    public void iAmAnAdministratorOfTheWebsiteAndIUploadAnAlertOfTypeOne() {
+    @Given("I am an administrator of the website and I upload an alert of type 1")
+    public void iAmAnAdministratorOfTheWebsiteAndIUploadAnAlertOfType1() {
         uploadXAlerts(1, "Cars");
     }
 
-    @Given("I am an administrator of the website and I upload an alert of type two")
-    public void iAmAnAdministratorOfTheWebsiteAndIUploadAnAlertOfTypeTwo() {
+    @Given("I am an administrator of the website and I upload an alert of type 2")
+    public void iAmAnAdministratorOfTheWebsiteAndIUploadAnAlertOfType2() {
         uploadXAlerts(1, "Marine");
     }
 
-    @Given("I am an administrator of the website and I upload an alert of type three")
-    public void iAmAnAdministratorOfTheWebsiteAndIUploadAnAlertOfTypeThree() {
+    @Given("I am an administrator of the website and I upload an alert of type 3")
+    public void iAmAnAdministratorOfTheWebsiteAndIUploadAnAlertOfType3() {
         uploadXAlerts(1, "Long Lets");
     }
 
-    @Given("I am an administrator of the website and I upload an alert of type four")
-    public void iAmAnAdministratorOfTheWebsiteAndIUploadAnAlertOfTypeFour() {
+    @Given("I am an administrator of the website and I upload an alert of type 4")
+    public void iAmAnAdministratorOfTheWebsiteAndIUploadAnAlertOfType4() {
         uploadXAlerts(1, "Property For Sale");
     }
 
-    @Given("I am an administrator of the website and I upload an alert of type five")
-    public void iAmAnAdministratorOfTheWebsiteAndIUploadAnAlertOfTypeFive() {
+    @Given("I am an administrator of the website and I upload an alert of type 5")
+    public void iAmAnAdministratorOfTheWebsiteAndIUploadAnAlertOfType5() {
         uploadXAlerts(1, "Toys");
     }
 
-    @Given("I am an administrator of the website and I upload an alert of type six")
-    public void iAmAnAdministratorOfTheWebsiteAndIUploadAnAlertOfTypeSix() {
+    @Given("I am an administrator of the website and I upload an alert of type 6")
+    public void iAmAnAdministratorOfTheWebsiteAndIUploadAnAlertOfType6() {
         uploadXAlerts(1, "Computers & Office");
     }
 
+    @Given("I am an administrator of the website and I upload an alert of type error")
+    public void iAmAnAdministratorOfTheWebsiteAndIUploadAnAlertOfTypeError() {
+        uploadXAlerts(1, "Food & Wine"); // Note that Food & Wine should return an alertType of -1
+    }
     @And("the icon displayed should be {string}")
-    public void theIconDisplayedShouldBe(String icon_expected_png) {
-        Assertions.assertEquals(icon_expected_png, marketAlertsPageObject.getIconPng());
+    public void theIconDisplayedShouldBe(String icon_File) {
+        Assertions.assertEquals(icon_File, marketAlertsPageObject.getIconFile());
     }
 
-    @And("I quit the browser")
-    public void iQuitTheBrowser() {
-        driver.quit();
-    }
 }

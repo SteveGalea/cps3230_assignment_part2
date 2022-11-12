@@ -88,4 +88,18 @@ public class FacadeTests {
 
         // Teardown (if any)
     }
+    @Test
+    public void testClearAllAlerts(){
+        // Setup
+        doReturn(200).when(requestHelper).delete();
+
+        // Exercise
+        facade.clearAlerts();
+
+        // Verify
+        //get num of calls of each method
+        verify(requestHelper, times(1)).delete();
+
+        // Teardown (if any)
+    }
 }

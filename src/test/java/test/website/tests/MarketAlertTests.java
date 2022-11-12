@@ -57,7 +57,7 @@ public class MarketAlertTests {
     }
 
     @Test
-    public void testInputVXalidCredentials(){
+    public void test1231(){
         // Setup (if any)
         String validUserId = "baf95487-17f6-40df-b758-3c938a0ec72a";
         marketAlertsPageObject.goToLoginPage();

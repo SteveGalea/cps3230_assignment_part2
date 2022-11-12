@@ -9,6 +9,9 @@ public class RequestHelper {
     public RequestHelper(){
         requestMaker = null;
     }
+    public RequestHelper(RequestMaker requestMaker){
+        this.requestMaker = requestMaker;
+    }
 
     //setter
     public void setRequestMaker(RequestMaker requestMaker) {

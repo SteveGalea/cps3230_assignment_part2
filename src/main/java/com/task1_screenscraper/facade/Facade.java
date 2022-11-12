@@ -32,8 +32,8 @@ public class Facade {
         wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         priceConverter = new PriceConverter();
         productList = new ArrayList<>(5);
-        requestHelper = new RequestHelper();
         requestMaker = new RequestMaker();
+        requestHelper = new RequestHelper(requestMaker);
         maltaParkPageObject = new MaltaParkPageObject(driver, wait, priceConverter);
         maltaParkScreenScraper = new MaltaParkScreenScraper(driver, wait, priceConverter, maltaParkPageObject, productList,requestHelper, requestMaker);
     }
@@ -80,6 +80,7 @@ public class Facade {
     }
 
     public void clearAlerts() {
-        requestMaker.makeDeleteRequest();
+//        requestMaker.makeDeleteRequest();
+        requestHelper.delete();
     }
 }
