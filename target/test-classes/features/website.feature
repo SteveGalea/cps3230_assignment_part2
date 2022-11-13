@@ -31,6 +31,7 @@ Feature: MarketAlertUm Customised E-commerce Alerts
     Given I am a user of marketalertum
     When I view a list of alerts
     Then I should see 5 alerts
+
   Scenario Outline: Icon check
     Given I am an administrator of the website and I upload an alert of type <alert-type>
     Given I am a user of marketalertum
@@ -49,7 +50,6 @@ Feature: MarketAlertUm Customised E-commerce Alerts
     |6            |icon-electronics.png     |
 
 
-#
 #  Scenario: Car Icon check
 #    Given I am an administrator of the website and I upload an alert of type 1
 #    Given I am a user of marketalertum
